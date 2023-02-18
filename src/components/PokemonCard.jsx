@@ -27,30 +27,22 @@ function PokemonCard({
   return (
     <div class="relative flex justify-end mr-2">
       {isShown && (
-        <div class="flex flex-col left-32 bottom-6 w-2/5 rounded-xl items-center justify-around fixed shadow-xl shadow-secondary xs-12">
+        <div class="flex flex-col w-1/2 right-[45%] top-[13%] rounded-xl fixed shadow-lg shadow-tertiary xs-12">
           <div className="image-container">
-            <div className="type-container">
+            <img src={image} alt={name} />
+            <div className="base-container">
               <div className="stats-left">
                 <p>Type:</p>
                 <p>Height:</p>
                 <p>Weight:</p>
+                {statsName.map((stats) => (
+                  <p className="stats">{stats}</p>
+                ))}
               </div>
               <div className="stats-right">
                 <p>{type}</p>
                 <p>{height}0 cm</p>
                 <p>{weight} lbs</p>
-              </div>
-            </div>
-            <img src={image} alt={name} />
-          </div>
-          <div className="base-container">
-            <div className="base-stats">
-              <div>
-                {statsName.map((stats) => (
-                  <p className="stats">{stats}</p>
-                ))}
-              </div>
-              <div>
                 {stats.map((stats) => (
                   <p className="stats">{stats}</p>
                 ))}
@@ -60,7 +52,7 @@ function PokemonCard({
         </div>
       )}
       <div
-        class="flex items-center h-20 text-3xl mx-0 my-2 py-0 px-5 relative border-2 border-primary rounded-full bg-gradient-to-r from-primary to-white  hover:bg-secondary shadow-md hover:shadow-secondary/30"
+        class="flex items-center h-20 text-3xl mx-0 my-2 py-0 px-5 relative border-2 border-primary rounded-full bg-gradient-to-r from-primary to-white  hover:bg-white shadow-xl hover:shadow-tertiary/30"
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
         onClick={modalHandler}
