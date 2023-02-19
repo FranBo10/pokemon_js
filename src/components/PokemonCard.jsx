@@ -52,7 +52,7 @@ function PokemonCard({
         </div>
       )}
       <div
-        class="flex items-center h-20 text-3xl mx-0 my-2 py-0 px-5 relative border-2 border-primary rounded-full bg-gradient-to-r from-primary to-white  hover:bg-white shadow-xl hover:shadow-tertiary/30"
+        class="flex items-center h-20 text-3xl mx-0 my-2 py-0 px-5 relative border-2 border-primary rounded-full bg-gradient-to-r from-primary to-white  hover:bg-white shadow-lg hover:shadow-secondary"
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
         onClick={modalHandler}
