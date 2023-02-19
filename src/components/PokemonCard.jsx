@@ -25,9 +25,9 @@ function PokemonCard({
   }
 
   return (
-    <div class="relative flex justify-end mr-2">
+    <div class="relative mt-5 sm:flex justify-end mr-2">
       {isShown && (
-        <div class="flex flex-col w-1/2 right-[45%] top-[13%] rounded-xl fixed shadow-lg shadow-tertiary xs-12">
+        <div class="hidden md:flex flex-col w-1/2 right-[45%] top-[13%] rounded-xl fixed xs-12">
           <div className="image-container">
             <img src={image} alt={name} />
             <div className="base-container">

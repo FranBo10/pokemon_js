@@ -51,14 +51,14 @@ const PokeTopBar = () => {
   const logoImg =
     "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png";
   return (
-    <div class="flex align-center justify-between fixed w-full bg-gradient-to-r from-primary to-white">
+    <div class="flex align-center justify-between fixed w-full bg-transparent">
       <div class="flex">
         <img alt="pokeapi-logo" src={logoImg} class="w-40 mr-6 ml-5" />
-        <div class="xs:hidden md:flex items-center ml-3 pt-4 pr-3 pb-4 pl-5">
+        <div class="hidden md:flex items-center ml-3 pt-4 pr-3 pb-4 pl-5">
           <img src={pokeball} alt="pokeball" class="w-7 mr-4" />
           <p class="text-lg font-semibold">458</p>
         </div>
-        <div class="flex items-center ml-3 pt-4 pr-3 pb-4 pl-5">
+        <div class="hidden md:flex items-center ml-3 pt-4 pr-3 pb-4 pl-5">
           <img src={pokeball} alt="pokeball" class="w-7 mr-4" />
           <p class="text-lg font-semibold">659</p>
         </div>

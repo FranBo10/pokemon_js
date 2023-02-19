@@ -9,6 +9,12 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+}
+
+#root {  
+  background-image: url("/src/images/purpyellow2.png");
+  background-size: cover;
 }
 
 @layer base {

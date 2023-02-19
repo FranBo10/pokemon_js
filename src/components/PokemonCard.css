@@ -28,8 +28,8 @@
     padding: 15px;
     margin-left: 25%;
     border-radius: 50%;
-    border: 5px solid RGB(55,97,168);
-    box-shadow: 0 0 10px 5px RGB(55,97,168);
+    border: 5px solid rgb(139,53,245);
+    box-shadow: 0 0 10px 5px rgb(139,53,245);
 }
 
 .base-container {

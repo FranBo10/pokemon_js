@@ -1,7 +1,7 @@
 import React from "react";
 import "./Modal.css";
 import pokeball from "../images/pokeball.png";
-import bg from "../images/bg.jpg";
+// import bg from "../images/bg.jpg";
 
 function Modal({
   onClick,

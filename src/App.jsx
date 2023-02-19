@@ -2,9 +2,6 @@ import "./index.css";
 import PokeList from "./components/PokeList";
 
 function App() {
-  
-
-  
   return (
     <>
       <PokeList />
