@@ -1,54 +1,60 @@
 const [pokemons, setPokemons] = useState([]);
+const [pokenames, setPokenames] = useState([]);
+const [poketypes, setPoketypes] = useState([]);
 
-  useEffect(() => {
-    const searchPokemon = async () => {
-      const data = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=20`)
-
-      console.log(data.data.results);    
-      
-       data.data.results.forEach(async(pokemon) =>{
-        const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name.toLowerCase()}`)
-
-        setPokemons((p) => [...p, poke.data])
-      } )  
-    }    
-       searchPokemon();
-  
-  }, []);
-
-  console.log(pokemons)
-
-  
-  data.data.results.forEach(async (pokeName) => {
-    const poke = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${pokeName.name.toLowerCase()}`
+useEffect(() => {
+  const searchPokemon = async () => {
+    const data = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon?limit=20&offset=20`
     );
 
-    setPokenames((p) => [...p, poke.data]);        
+    console.log(data.data.results);
 
-    data.data.results.forEach(async (pokeType) => {
+    data.data.results.forEach(async (pokemon) => {
       const poke = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${pokeType.type.toLowerCase()}`
+        `https://pokeapi.co/api/v2/pokemon/${pokemon.name.toLowerCase()}`
       );
 
-      setPoketypes((p) => [...p, poke.data]);
-      
-    
-    }
-    const getAllPokemons = async () => {
-      const res = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=20&offset=20"
-      );
-      const results = res.data.results;
+      setPokemons((p) => [...p, poke.data]);
+    });
+  };
 
-      results.forEach(async (pokemon) => {
-        const poke = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-        );
-        setPokemons((p) => [...p, poke.data]);
-      });
+  searchPokemon();
+}, []);
 
-      /*Bellessa <POkemon className="js"></POkemon>import React from "react";
+console.log(pokemons);
+
+data.results.forEach(async (pokeName) => {
+  const poke = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${pokeName.name.toLowerCase()}`
+  );
+
+  setPokenames((p) => [...p, poke.data]);
+
+  data.results.forEach(async (pokeType) => {
+    const poke = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${pokeType.type.toLowerCase()}`
+    );
+
+    setPoketypes((p) => [...p, poke.data]);
+  });
+});
+
+const getAllPokemons = async () => {
+  const res = await axios.get(
+    "https://pokeapi.co/api/v2/pokemon?limit=20&offset=20"
+  );
+  const results = res.data.results;
+
+  results.forEach(async (pokemon) => {
+    const poke = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
+    );
+    setPokemons((p) => [...p, poke.data]);
+  });
+};
+
+/*Bellessa <POkemon className="js"></POkemon>import React from "react";
 
 const Pokemon = (props) => {
   const { pokemon } = props;
@@ -92,49 +98,47 @@ export default Pokemon;
 
 
       /*Bellessa*/
-      import React, {useState} from "react";
-import SearchPokemon from'./SearchPokemon';
+import React, { useState } from "react";
+import SearchPokemon from "./SearchPokemon";
 
 const Searchbar = () => {
-    const [search, setSearch] = useState("");
-    const [pokemon, setPokemon] = useState();
+  const [search, setSearch] = useState("");
+  const [pokemon, setPokemon] = useState();
 
-    const onChangeHandler = (e) => {
-        setSearch(e.target.value)
-    }
+  const onChangeHandler = (e) => {
+    setSearch(e.target.value);
+  };
 
-    const onButtonClickHandler = () => {
-        onSearchHandler(search)
-    }
+  const onButtonClickHandler = () => {
+    onSearchHandler(search);
+  };
 
-    const onSearchHandler = () => async (pokemon) => {
-        const result = await SearchPokemon(pokemon)
-        console.log(result)
-    }
+  const onSearchHandler = () => async (pokemon) => {
+    const result = await SearchPokemon(pokemon);
+    console.log(result);
+  };
 
-    return (
-        <div className="searchbar-container">
-            <div className="searchbar">
-                <input placeholder="Buscar pokemon" onChange={onChangeHandler} />
-            </div>
-            <div className="searchbar-btn">
-                <button onClick={onButtonClickHandler} >Buscar</button>
-            </div>
-            {pokemon ? (
-                <div>
-                    <div>Nombre: {pokemon.nombre}</div>
-                    <div>Peso: {pokemon.weight}</div>
-                    <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
-                </div>
-            ) : null}
-            </div>
-        )
-    }
-
+  return (
+    <div className="searchbar-container">
+      <div className="searchbar">
+        <input placeholder="Buscar pokemon" onChange={onChangeHandler} />
+      </div>
+      <div className="searchbar-btn">
+        <button onClick={onButtonClickHandler}>Buscar</button>
+      </div>
+      {pokemon ? (
+        <div>
+          <div>Nombre: {pokemon.nombre}</div>
+          <div>Peso: {pokemon.weight}</div>
+          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+        </div>
+      ) : null}
+    </div>
+  );
+};
 
 export default Searchbar;
-      
-    
+
 // const InputForm = () => {
 
 //     const [pokemons, setPokemons] = useState([]);
@@ -145,14 +149,14 @@ export default Searchbar;
 //             "https://pokeapi.co/api/v2/pokemon?limit=20&offset=20"
 //           );
 //           const results = res.data.results;
-    
+
 //           results.forEach(async (pokemon) => {
 //             const poke = await axios.get(
 //               `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
 //             );
 //             setPokemons((p) => [...p, poke.data]);
 //           });
-          
+
 //         };
 
 //     const renderPokemonData = () => {
@@ -169,7 +173,7 @@ export default Searchbar;
 //               statsName={pokemon.stats.map((stat) => stat.stat.name).slice(0, 3)}
 //             />
 //           ))}
-        
+
 //     }
 
 //     },[])
@@ -183,5 +187,3 @@ export default Searchbar;
 // )}
 
 // export default InputForm;
-
-  
